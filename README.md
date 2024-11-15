@@ -30,7 +30,7 @@ You can view the website live at:
 Alternatively, clone the repository and open the `index.html` file in your browser:
 ```bash
 git clone https://github.com/Prap21/Gabiela-Valeri-Handmade-Shoes.git
-
+```
 
 For inquiries or feedback, reach me at:
 Email: dimosprap@gmail.com
