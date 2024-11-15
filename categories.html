@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriela Valeri Handmade Shoes</title>
+    <link rel="stylesheet" href="styles2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/051368d9ca.js" crossorigin="anonymous"></script>
+</head>
+<body id="categories">
+    
+    <div class="menu-bar">
+        <nav class="nav-bar">
+            <!-- MENU TAG -->
+            <ul class="nav-left">
+                <li>
+                    <a href="#" id="menu" class="menu">
+                        <i class="fa-solid fa-bars" id="menu-icon"></i>
+                        <span id="menu-text">Menu</span>
+                    </a>                   
+                </li>
+            </ul>
+        </nav>
+        <img src="images/logo/gabriela valeri logo.jpg" alt="Gabriela Valeri Logo" id="header-img">
+        <nav class="nav-bar">
+            <ul class="nav-right">
+                <li><a href="index.html" class="nav-right-icon"><i class="fa-solid fa-shop"></i></a></li>
+                <li><a href="index.html?#communication" class="nav-right-icon"><i class="fa-regular fa-envelope"></i></a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <!-- Sidebar Menu -->
+    <div class="sidebar" id="sidebar-menu">
+        <a href="#" id="close-button" class="close-btn">
+            <i class="fa-solid fa-xmark" id="close-icon"></i>
+            <span id="close-text">Close</span>
+        </a>
+        <a href="index.html?#shoe-collection">
+            <h2>Collection</h2> <!-- New heading for the collection -->
+        </a>
+        <ul><li><a href="index.html?#shoe-collection">Νέες Αφίξεις</a></li></ul>
+        <a href="#categories" onclick="filterShoesByCategory('Γυναικεία')"><h2>Κατηγορίες</h2></a>
+        <a href="#" onclick="filterShoesByCategory('Γυναικεία')" class="sidebar-h3"><h3>Γυναικεία</h3></a>
+        <ul>
+            <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Γόβες')">Γόβες</a></li>
+            <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Μποτάκια')">Μποτάκια</a></li>
+            <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Μπότες')">Μπότες</a></li>
+            <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Πέδιλα')">Πέδιλα</a></li>
+            <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Loafers')">Loafers</a></li>
+            <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Flat')">Flat</a></li>
+            <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Παντόφλες')">Παντόφλες</a></li>
+            <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Μπαλαρίνες')">Μπαλαρίνες</a></li>
+            <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Mules')">Mules</a></li>
+            <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Sneakers')">Sneakers</a></li>
+            <li><a href="#" onclick="filterShoesByCategory('Νυφικά')">Νυφικά</a></li>
+        </ul>
+        <a href="#" class="sidebar-h3" onclick="filterShoesByCategory('Ανδρικά')"><h3>Ανδρικά</h3></a>
+        <ul>
+            <li><a href="#" onclick="filterShoesByCategory('Ανδρικά: Ανδρικά-Sneakers')">Sneakers</a></li>
+            <li><a href="#" onclick="filterShoesByCategory('Ανδρικά: Ανδρικά-Σκαρπίνια')">Σκαρπίνια</a></li>
+        </ul>
+    </div>
+
+    <div class="shoe-categories" id="shoe-categories">
+        <ul>
+            <li class="dropdown">
+                <a href="#" onclick="filterShoesByCategory('Γυναικεία')">Γυναικεία</a>
+                <ul class="dropdown-content">
+                    <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Γόβες')">Γόβες</a></li>
+                    <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Μποτάκια')">Μποτάκια</a></li>
+                    <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Μπότες')">Μπότες</a></li>
+                    <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Πέδιλα')">Πέδιλα</a></li>
+                    <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Loafers')">Loafers</a></li>
+                    <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Flat')">Flat</a></li>
+                    <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Παντόφλες')">Παντόφλες</a></li>
+                    <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Μπαλαρίνες')">Μπαλαρίνες</a></li>
+                    <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Mules')">Mules</a></li>
+                    <li><a href="#" onclick="filterShoesByCategory('Γυναικεία: Sneakers')">Sneakers</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" onclick="filterShoesByCategory('Ανδρικά')">Ανδρικά</a>
+                <ul class="dropdown-content">
+                    <li><a href="#" onclick="filterShoesByCategory('Ανδρικά: Ανδρικά-Sneakers')">Sneakers</a></li>
+                    <li><a href="#" onclick="filterShoesByCategory('Ανδρικά: Ανδρικά-Σκαρπίνια')">Σκαρπίνια</a></li>
+                </ul>
+            </li>
+            <li><a href="#" onclick="filterShoesByCategory('Νυφικά')">Νυφικά</a></li>
+        </ul>
+    </div>
+
+    <div class="shoe-category"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Select all category links
+            const categoryLinks = document.querySelectorAll('.category-link');
+            
+            // Check if categoryLinks is not empty
+            if (categoryLinks.length > 0) {
+                // Add event listeners to each link
+                categoryLinks.forEach(link => {
+                    link.addEventListener('click', function(event) {
+                        event.preventDefault();  // Prevent the default anchor behavior
+                        
+                        // Get the category from the data attribute
+                        const category = event.target.dataset.category;
+                        
+                        // Call the function to filter by category
+                        filterShoesByCategory(category);
+                    });
+                });
+            } else {
+                console.log("No category links found.");
+            }
+
+        });
+        
+            
+    
+        // Define the filterShoesByCategory function
+        function filterShoesByCategory(category) {
+            const categoryUrl = `categories.html?category=${encodeURIComponent(category)}`;
+            window.location.href = categoryUrl; // Navigate to categories page with category parameter
+            }
+
+            const shoesByCat = [
+        {   name: "Γόβα με άσπρες λεπτομέρειες ~1001~", 
+            category: ["Γυναικεία: Γόβες" ], 
+            price: "50€", 
+            imageUrl1: "images/shoe collection img/11304.jpg.webp", 
+            imageUrl2: "images/shoe collection img/11305.jpg.webp", 
+            imageUrl3: "images/shoe collection img/11306.jpg.webp", 
+            description: "Αυτή η γόβα είναι ο ορισμός της κομψότητας και της άνεσης. Κατασκευασμένη από υψηλής ποιότητας δέρμα, προσφέρει άψογη εφαρμογή και στήριξη σε κάθε βήμα. Η λεπτή και κομψή γραμμή της, μαζί με την αριστοκρατική τακούνι, την καθιστούν την ιδανική επιλογή για κάθε περίσταση, από επαγγελματικές συναντήσεις μέχρι βραδινές εξόδους. Αυτή η γόβα είναι ο ορισμός της κομψότητας και της άνεσης.<br><br> Κατασκευασμένη από υψηλής ποιότητας δέρμα, προσφέρει άψογη εφαρμογή και στήριξη σε κάθε βήμα. Η λεπτή και κομψή γραμμή της, μαζί με την αριστοκρατική τακούνι, την καθιστούν την ιδανική επιλογή για κάθε περίσταση, από επαγγελματικές συναντήσεις μέχρι βραδινές εξόδους." },
+
+        {   name: "Gabriela Valeri Handmade Γυναικείο Μποτάκι με Τοκάδες ~1101~", 
+            category: ["Γυναικεία: Μποτάκια"], 
+            price: "55€", 
+            imageUrl1: "images/shoe collection img/Handmade-Γυναικείο-Μποτάκι-Gabriela-Valeri-με-Τοκάδες-600-1b.jpg", 
+            imageUrl2: "images/shoe collection img/Handmade-Γυναικείο-Μποτάκι-Gabriela-Valeri-με-Τοκάδες-600-2c.jpg", 
+            imageUrl3: "images/shoe collection img/Handmade-Γυναικείο-Μποτάκι-Gabriela-Valeri-με-Τοκάδες-600a.jpg", 
+            description: "Elegant high heel shoes." },
+
+        {   name: "Gabriela Valeri Handmade Γόβα Με Μαύρο Glitter και Μαύρη Διαφάνεια ~1002~", 
+            category: ["Γυναικεία: Γόβες"], 
+            price: "70€", 
+            imageUrl1: "images/shoe collection img/TZS_7996a.jpg", 
+            imageUrl2: "images/shoe collection img/TZS_7997b.jpg", 
+            imageUrl3: "images/shoe collection img/TZS_7998c.jpg", 
+            description: "Comfortable ankle boots." },
+
+        {   name: "Gabriela Valeri Handmade Γόβα με ιδιαίτερο Φιόγκο ~1003~", 
+            category: ["Γυναικεία: Γόβες"], 
+            price: "80€", 
+            imageUrl1: "images/shoe collection img/157666515674197496-19b.jpg", 
+            imageUrl2: "images/shoe collection img/157666515674197496-1-15c.jpg", 
+            imageUrl3: "images/shoe collection img/157666515674197496-2-9a.jpg", 
+            description: "Stylish sneakers for men." },
+
+        {   name: "Gabriela Valeri Χρυσή Γόβα με Κόσμημα ~1023~", 
+            category: ["Γυναικεία: Γόβες"], 
+            price: "90€", 
+            imageUrl1: "images/shoe collection img/11293a.jpg", 
+            imageUrl2: "images/shoe collection img/11294b.jpg", 
+            imageUrl3: "images/shoe collection img/11296c.jpg", 
+            description: "Elegant men's shoes." },
+
+        {   name: "Loafers ~1601~", 
+            category: ["Γυναικεία: Loafers"], 
+            price: "65€", 
+            imageUrl1: "images/shoe collection img/5566a.jpg", 
+            imageUrl2: "images/shoe collection img/5567b.jpg", 
+            imageUrl3: "images/shoe collection img/5568c.jpg", 
+            description: "Comfortable women's sneakers." },
+
+        {   name: "Gabriela Valeri Χρυσή-Ρόζ Γόβα με Κόσμημα ~1024~ ", 
+            category: ["Γυναικεία: Γόβες"], 
+            price: "65€", 
+            imageUrl1: "images/shoe collection img/11297a.jpg", 
+            imageUrl2: "images/shoe collection img/11298b.jpg", 
+            imageUrl3: "images/shoe collection img/11300c.jpg", 
+            description: "Comfortable women's sneakers." },
+
+        {   name: "Γυναικεία Μαύρα Μποτάκια ~1401~", 
+            category: ["Γυναικεία: Μποτάκια"], 
+            price: "65€", 
+            imageUrl1: "images/shoe collection img/Gabriela-Valeri-Χειροποίητα-Μοντέρνα-Μποτάκια-INF-1b.jpg", 
+            imageUrl2: "images/shoe collection img/Gabriela-Valeri-Χειροποίητα-Μοντέρνα-Μποτάκια-INF-2c.jpg", 
+            imageUrl3: "images/shoe collection img/Gabriela-Valeri-Χειροποίητα-Μοντέρνα-Μποτάκια-INFa.jpg", 
+            description: "Comfortable women's sneakers." }
+    ];
+
+            function createShoeItem(shoe) {
+            const shoeItem = document.createElement('div');
+            shoeItem.className = 'shoe-item';
+
+            shoeItem.innerHTML = `
+                <img src="${shoe.imageUrl1}" alt="${shoe.name}">
+                <h3>${shoe.name}</h3>
+                <p>${shoe.category.map(cat => trimCategoryName(cat)).join(', ')}</p>
+                <p>Τιμή: ${shoe.price}</p>
+            `;
+
+            shoeItem.addEventListener('click', () => openShoeDetails(shoe));
+            return shoeItem;
+        }
+
+        function trimCategoryName(category) {
+            if (category.startsWith('Γυναικεία: ')) return category.replace('Γυναικεία: ', '');
+            if (category.startsWith('Ανδρικά: ')) return category.replace('Ανδρικά: ', '');
+            return category;
+        }
+    
+        function displayShoesByCategory() {
+    const shoeCategoryContainer = document.querySelector('.shoe-category');
+    const category = getCategoryFromURL(); // Extract category from the URL
+
+    if (shoeCategoryContainer && category) {
+        // Clear previous content with fade-out effect
+        shoeCategoryContainer.classList.remove('show');
+        setTimeout(() => {
+            shoeCategoryContainer.innerHTML = `<h2>${category}</h2>`; // Set category header
+
+            const filteredShoes = shoesByCat.filter(shoe =>
+                shoe.category.some(cat => cat.startsWith(category)) // Filter shoes based on category
+            );
+
+            if (filteredShoes.length > 0) {
+                filteredShoes.forEach(shoe => {
+                    const shoeItem = createShoeItem(shoe);
+                    shoeCategoryContainer.appendChild(shoeItem);
+
+                    // Smoothly show the items one by one
+                    setTimeout(() => shoeItem.classList.add('show'), 100);
+                });
+            } else {
+                shoeCategoryContainer.innerHTML += `<p>No products found in this category.</p>`;
+            }
+
+            // Fade-in effect for the container
+            setTimeout(() => shoeCategoryContainer.classList.add('show'), 100);
+        }, 500); // Delay for fade-out effect
+    }
+}
+
+
+        // Open shoe details in a modal
+        function openShoeDetails(shoe) {
+            const newDiv = document.createElement('div');
+            newDiv.className = 'new-shoe-div';
+
+            const overlay = document.createElement('div');
+            overlay.className = 'overlay';
+            document.body.appendChild(overlay);
+
+            newDiv.innerHTML = `
+                <button class="close-button">X</button>
+                <div class="shoe-content">
+                    <div class="image-container">
+                        <img class="shoe-image" src="${shoe.imageUrl1}" alt="${shoe.name}">
+                        <div class="image-buttons">
+                            <label for="image1">
+                                <input type="radio" id="image1" name="shoe-image" value="${shoe.imageUrl1}" checked>
+                            </label>
+                            <label for="image2">
+                                <input type="radio" id="image2" name="shoe-image" value="${shoe.imageUrl2}">
+                            </label>
+                            <label for="image3">
+                                <input type="radio" id="image3" name="shoe-image" value="${shoe.imageUrl3}">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="shoe-info">
+                        <h3>${shoe.name}</h3>
+                        <p class="description">${shoe.description}</p>
+                        <div class="shoe-footer">
+                            <p class="category">
+                                ${shoe.category.map(cat => `<span>${trimCategoryName(cat)}</span>`).join(' ')}
+                            </p>
+                            <p class="price">Τιμή: <span>${shoe.price}</span></p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(newDiv);
+
+            const radioButtons = newDiv.querySelectorAll('.image-buttons input[type="radio"]');
+            const mainImage = newDiv.querySelector('.shoe-image');
+
+            function updateActiveState() {
+                const labels = newDiv.querySelectorAll('.image-buttons label');
+                labels.forEach(label => label.classList.remove('active'));
+
+                const selectedRadio = Array.from(radioButtons).find(radio => radio.checked);
+                const selectedImage = selectedRadio.value;
+                mainImage.src = selectedImage;
+
+                const selectedLabel = newDiv.querySelector(`label[for="${selectedRadio.id}"]`);
+                selectedLabel.classList.add('active');
+            }
+
+            radioButtons.forEach(button => button.addEventListener('change', updateActiveState));
+
+            // Close button functionality
+            const closeButton = newDiv.querySelector('.close-button');
+            closeButton.addEventListener('click', () => {
+                newDiv.remove();
+                overlay.remove();
+            });
+
+            overlay.addEventListener('click', () => {
+                newDiv.remove();
+                overlay.remove();
+            });
+        }
+    
+        // Get category from the URL parameters
+        function getCategoryFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            console.log('Category from URL:', category); // Debugging line
+            return category;
+        }
+    
+        // Initialize the category page
+        if (document.body.id === 'categories') {
+            displayShoesByCategory();
+        }
+
+    </script>
+    
+    <script src="script.js"></script>
+    
+</body>
+</html>

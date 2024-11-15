@@ -1,0 +1,934 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Colors and Variables */
+:root {
+    --color-nav: rgb(63, 75, 32);
+    --color-black: #191919;
+    --hover-effect: #c6bd3fd7;
+    --dark-olive: rgb(37, 45, 16);
+    --color-brown: #4A3C31;
+    --color-beige: #F5DEB3;
+    --color-beige-fade: rgb(255, 247, 231);
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Menu Bar */
+.menu-bar {
+    font-weight: 500;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    position: sticky; /* Make it sticky */
+    top: 0; /* Stick it to the top of the viewport */
+    z-index: 1002; /* Ensure it's above other elements */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.346);
+}
+
+/* Logo */
+.menu-bar img {
+    max-height: 90px;
+    width: auto;
+}
+
+/* Left and Right Navigation */
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Common Link Styles */
+a {
+    text-decoration: none;
+    color: var(--color-brown);
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    height: 2px;
+    background-color: var(--hover-effect);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+a:hover {
+    color: var(--hover-effect);
+}
+
+a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Menu Icon */
+.menu {
+    font-size: 24px;
+    padding: 25px 15px;
+    display: flex;
+    align-items: center; /* Align items in the menu link */
+}
+
+.menu i {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    margin-right: 8px; /* Add space between icon and text */
+}
+
+/* Style for right navigation links */
+.nav-right-icon {
+    font-size: 20px;
+    padding: 10px 25px;
+}
+
+/* Sidebar Menu */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Start hidden off-screen */
+    width: 300px;
+    height: 100%;
+    background: #fff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: left 0.3s ease; /* Smooth transition */
+    z-index: 1002;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll; /* Enable vertical scrolling */
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar a.close-btn {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    margin-bottom: 20px; /* Space below the close button */
+    font-size: 24px; /* Increased font size for close button */
+}
+
+.close-btn i {
+    margin-right: 10px; /* Space between icon and text */
+}
+
+ul li{
+    list-style: none;
+}
+
+/* Sidebar Links */
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin: 15px 0; /* Space between links */
+}
+
+.sidebar ul li a {
+    font-size: 20px; /* Increased font size for sidebar links */
+}
+
+.sidebar.show {
+    left: 0; /* Move sidebar into view */
+}
+
+.sidebar h2:first-child{
+    margin-bottom: 7px;
+}
+
+.sidebar h2 {
+    font-size: 24px; /* Font size for the heading */
+    color: var(--color-brown); /* Heading color */
+    margin-bottom: 10px; /* Space below the heading */
+    margin-top: 5px;
+}
+
+.sidebar-h3{
+    align-items: center;
+    margin: 5px auto;
+    font-size: 1.2rem;
+    color: var(--color-brown);
+}
+
+.sidebar-h3:hover{
+    color: var(--color-brown);
+}
+
+.shoe-categories {
+    background: var(--color-beige);
+    height: 55px;
+    position: sticky;
+    color: var(--color-brown);
+    padding: 15px 45px;
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 1001;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.2);
+}
+
+.shoe-categories ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.shoe-categories li {
+    position: relative;
+}
+
+.shoe-categories a {
+    color: var(--color-brown);
+    text-decoration: none;
+}
+
+/* Style for dropdown content to make items stack vertically */
+.shoe-categories .dropdown-content {
+    visibility: hidden; /* Start as invisible */
+    opacity: 0; /* Start with opacity 0 */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--color-beige);
+    padding: 10px;
+    padding-top: 5px;
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
+    min-width: 150px;
+    transform: translateY(10px); /* Slightly off-screen */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s; /* Add delay for visibility */
+    display: block; /* Ensure it behaves as a block element */
+}
+
+/* Ensures dropdown items stack vertically */
+.shoe-categories .dropdown-content li {
+    display: block; /* Each dropdown item is stacked vertically */
+}
+
+/* On hover, show the dropdown with smooth opacity and transform transition */
+.dropdown:hover .dropdown-content {
+    visibility: visible; /* Make it visible */
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move to the original position */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.dropdown-content li {
+    padding: 8px 0; /* Increased padding between dropdown items */
+}
+
+.dropdown-content li {
+    padding: 5px 0;
+}
+
+.dropdown-content a {
+    color: var(--color-brown);
+    font-size: 16px; /* Increased font size for dropdown items */
+    padding: 8px 12px; /* Adjust padding for more clickable area */
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f0e6d2;
+}
+
+
+.shoe-category {
+    padding: 20px 80px; /* Increase padding on the left and right */
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px; /* Space between items */
+    justify-content: center; /* Center the collection */
+    background-color: #fff; /* Background color for contrast */
+    height: 100%;
+    position: relative;
+    padding-bottom: 100px;
+}
+
+.shoe-category h2 {
+    font-size: 36px;
+    font-style: italic;
+    color: var(--color-brown);
+    text-align: left;
+    margin: 40px 30px; 
+    width: 100%;
+}
+
+/* Smooth transition for the shoe-category container */
+.shoe-category {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0; /* Start hidden */
+    transform: translateX(-20px); /* Start slightly below */
+}
+
+/* When the content is ready to display */
+.shoe-category.show {
+    opacity: 1;
+    transform: translateX(0); /* Move into place */
+}
+
+/* Smooth transition for individual shoe items */
+.shoe-item {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.shoe-item.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+/* Shoe Item */
+.shoe-item {
+    width: calc(25% - 30px); /* Four items per row with more space around */
+    border: 1px solid #757575cb;
+    border-radius: 8px;
+    padding: 50px 30px;
+    text-align: center;
+    transition: transform 0.2s;
+    color: var(--color-brown);
+}
+
+.shoe-item h3{
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+.shoe-item:hover {
+    transform: scale(1.05); /* Slightly scale up on hover for a better effect */
+    box-shadow: 10px 10px 5px lightgray;
+}
+
+.shoe-item img{
+    width: 80%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: fixed;  /* Makes it cover the entire screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(108, 108, 108, 0.5);  /* Semi-transparent black background */
+    z-index: 9998;  /* Ensure it's above the page content but below the modal */
+}
+
+.new-shoe-div {
+    color: var(--color-brown);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: var(--color-beige-fade);
+    padding: 20px;
+    border-radius: 8px;
+    height: 65%;
+    width: 70%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.305);
+    display: flex;
+    flex-direction: column;
+}
+
+.shoe-content {
+    display: flex;
+    align-items: flex-start;
+}
+
+.image-container {
+    position: relative;
+    width: 40%;
+    height: auto;
+}
+
+.shoe-image {
+    width: 100%;
+    height: auto;
+    opacity: 1;                    /* Ensure image is fully visible initially */
+    transition: opacity 0.5s ease-in-out; /* Fade transition for smooth change */
+}
+
+.image-buttons {
+    position: fixed;
+    bottom: 10px;
+    left: 20%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 6px;
+    border-radius: 20px;
+}
+
+.image-buttons label {
+    width: 15px;
+    height: 15px;
+    border: 2px solid #777; /* Change the color as needed */
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.image-buttons input[type="radio"] {
+    display: none;
+}
+
+.image-buttons label:hover {
+    background-color: #777;
+}
+
+/* Active label styling */
+.image-buttons label.active {
+    background-color: #777;
+}
+
+/* Image fade transition */
+.shoe-image.fade {
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+}
+
+.shoe-info {
+    width: 60%;
+    text-align: left;
+    margin-top: 20px;
+    margin-left: 25px;
+    padding-right: 8px;
+}
+
+.shoe-info h3{
+    font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.shoe-footer {
+    margin-top: auto; /* Pushes footer to the bottom */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: absolute;
+    bottom: 10%;
+    left: 60%;
+}
+
+.description::first-letter{
+    margin-left: 7px;
+}
+
+.description{
+    font-size: 17px;
+}
+
+.category {
+    color: #fff;
+    padding: 5px;
+    margin-bottom: 8px;
+    display: flex;
+    gap: 8px;  /* Adds space between the spans */
+}
+
+.category span {
+    border-radius: 50%;
+    padding: 4px 8px;
+    background-color: #777;  /* Optional: gives each category its own background color */
+    border-radius: 10px;
+}
+
+.price span{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.image-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.image-buttons label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.image-buttons input[type="radio"] {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.close-button {
+    background-color: lightgray;
+    color: #333;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    z-index: 9999;
+}
+
+.close-button:hover {
+    background-color: #333;
+    color: lightgray;
+}
+
+
+
+@media only screen and (max-width: 390px){
+
+    .new-shoe-div{
+        position: absolute;
+        margin-top: 50px;
+    }
+
+    .shoe-content{
+        height: 90%;
+    }
+
+    .shoe-info h3{
+        font-size: 22px;
+    }
+
+    .shoe-info p{
+        font-size: 16px;
+    }
+
+    .gallery span{
+        width: auto;
+    }
+
+    .category{
+        margin: 0;
+        padding: 5px;
+    }
+
+    .shoe-footer{
+        position: absolute;
+        margin: 0;
+        padding-bottom: 10px;
+        top: auto;
+        left: 0;
+    }
+
+    .shoe-info{
+        height: 100%;
+    }
+
+}
+
+
+/* Mobile Responsive Styles */
+@media only screen and (max-width: 720px){
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%; /* Full width of the viewport */
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+    .menu-bar {
+        flex-direction: row; /* Keep items in a row */
+        padding: 5px; /* Reduced padding */
+        justify-content: space-between; /* Maintain space between elements */
+        width: 100%; /* Ensure full width */
+    }
+
+    #header-img {
+        max-height: 70px; /* Adjust logo height */
+    }
+
+    .menu {
+        font-size: 20px; /* Adjust font size for the menu */
+        padding: 5px; /* Adjust padding for menu */
+    }
+
+    .nav-right-icon {
+        font-size: 18px; /* Make right icons smaller */
+        padding: 12px; /* Reduced padding for right icons */
+    }
+
+    .sidebar {
+        width: 80%; /* Adjust sidebar width for mobile */
+        max-width: 280px; /* Optional: set a max width for sidebar */
+        padding: 15px; /* Add some padding */
+    }
+
+    .sidebar a {
+        font-size: 18px; /* Adjust sidebar link font size */
+        padding: 10px; /* Adjust padding for sidebar links */
+    }
+
+    .sidebar h2 {
+        font-size: 24px; /* Make close button's text bigger */
+        margin-bottom: 0px; /* Add space below the header */
+    }
+
+    .shoe-categories ul li a{
+        margin: 0 auto;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .shoe-category{
+        width: 100%;
+        padding: 10px;
+        padding-bottom: 40px;
+    }
+
+    .shoe-category h2{
+        font-size: 36px;
+        width: 100%;
+        padding: 5px;
+    }
+
+    .shoe-item {
+        margin: 0;
+        padding: 10px;
+        width: calc(100% / 2 - 20px);
+        height: 100%;
+    }
+
+    .shoe-item h3{
+        padding-top: 0;
+        margin-top: 0;
+        font-size: 18px;
+    }
+
+    .shoe-item img{
+        padding: 0;
+        margin: 0 auto;
+        width: 80%;
+        height: 50%;
+        overflow:visible;
+    }
+
+    .new-shoe-div {
+        width: 90%;  /* Adjust the modal width to fit smaller screens */
+        height: auto;  /* Let the modal height adjust automatically */
+        padding: 15px;
+        display: flex;
+        flex-direction: column;  /* Make the content stack vertically */
+        justify-content: flex-start; /* Ensure content starts at the top */
+    }
+
+    .shoe-content {
+        flex-direction: column;  /* Stack the content vertically */
+        align-items: center;  /* Center the image and text */
+        width: 100%;  /* Ensure shoe content takes full width */
+    }
+
+    .image-container {
+        width: 100%;  /* Make image container take full width */
+        height: auto;
+        margin-bottom: 10px;  /* Space between image and shoe info */
+    }
+
+    .shoe-image {
+        width: 100%;  /* Ensure the image takes the whole space */
+        height: auto;
+        opacity: 1;
+    }
+
+    .shoe-info {
+        width: 100%;  /* Ensure shoe info takes full width */
+        text-align: center;  /* Center align shoe information */
+        margin-top: 15px;  /* Add space between image and shoe info */
+        overflow: hidden;
+    }
+
+    .shoe-info h3 {
+        font-size: 28px;
+        margin: 0px 10px;  /* Space between shoe name and category */
+    }
+
+    .category {
+        font-size: 16px;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: center; /* Center the categories */
+        gap: 8px;
+    }
+
+    .description {
+        font-size: 18px;
+        word-spacing: normal; /* Reset any abnormal word spacing */
+        letter-spacing: normal; /* Reset letter spacing */
+        margin-top: 20px;
+        padding: 5px;
+        max-height: 200px; /* Set a max height for the description */
+        overflow-y: auto; /* Enable scrolling for long descriptions */
+        text-align: justify; /* Justify text for better readability */
+    }
+
+    /* Shoe footer adjustments */
+    .shoe-footer {
+        margin: 0 auto;
+        position: relative;
+        text-align: center;
+        width: 100%;
+        left: auto;
+        top: 10%;
+        bottom: 0%;
+    }
+
+    .category, .price{
+        font-size: 20px;
+    }
+
+    .price span{
+        font-size: 24px;
+    }
+
+    .image-buttons {
+        position: absolute;
+        left: 50%;
+    }
+
+    .shoe-footer {
+        margin-top: 20px;  /* Space between description and footer */
+        text-align: center;  /* Center text in footer */
+    }
+
+}
+
+
+@media only screen and (min-width: 721px) and (max-width: 980px) {
+    /* Styles for screens between 601px and 900px */
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%; /* Full width of the viewport */
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+    .menu-bar {
+        flex-direction: row; /* Keep items in a row */
+        padding: 10px; /* Reduced padding */
+        justify-content: space-between; /* Maintain space between elements */
+        width: 100%; /* Ensure full width */
+    }
+
+    #header-img {
+        max-height: 70px; /* Adjust logo height */
+    }
+
+    .menu {
+        font-size: 24px; /* Adjust font size for the menu */
+        padding: 5px; /* Adjust padding for menu */
+    }
+
+    .nav-right-icon {
+        font-size: 20px; /* Make right icons smaller */
+        padding: 14px; /* Reduced padding for right icons */
+    }
+
+    .sidebar {
+        width: 80%; /* Adjust sidebar width for mobile */
+        max-width: 280px; /* Optional: set a max width for sidebar */
+        padding: 15px; /* Add some padding */
+    }
+
+    .sidebar a {
+        font-size: 18px; /* Adjust sidebar link font size */
+        padding: 10px; /* Adjust padding for sidebar links */
+    }
+
+    .sidebar h2 {
+        font-size: 24px; /* Make close button's text bigger */
+        margin-bottom: 0px; /* Add space below the header */
+    }
+
+    .hero{
+        margin: 0;
+        padding: 0;
+        height: 500px;
+        width: 100%;
+    }
+
+    .gallery-wrap{
+        padding: 0;
+        margin: 0;
+    }
+
+    .hero h2{
+        padding: 0;
+        margin: 0;
+    }
+
+    .gallery{
+        margin: 0;
+        padding: 0;
+    }
+
+    .gallery span{
+        width: 50%;
+        height: 100%;
+    }
+
+    .shoe-collection{
+        width: 100%;
+        padding: 20px;
+        padding-bottom: 40px;
+    }
+
+    .shoe-collection h2{
+        font-size: 42px;
+        width: 100%;
+        padding: 5px;
+    }
+
+    .shoe-item {
+        margin: 0;
+        padding: 10px;
+        width: calc(100% / 3 - 20px);
+        height: 100%;
+    }
+
+    .shoe-item h3{
+        padding-top: 0;
+        margin-top: 0;
+        font-size: 18px;
+    }
+
+    .shoe-item img{
+        padding: 0;
+        margin: 0 auto;
+        width: 80%;
+        height: 50%;
+        object-fit: contain;
+    }
+
+    .new-shoe-div {
+        width: 100%;  /* Adjust the modal width to fit smaller screens */
+        height: 40%;  /* Let the modal height adjust automatically */
+        padding: 15px;
+        display: flex;
+        flex-direction: column;  /* Make the content stack vertically */
+        justify-content: flex-start; /* Ensure content starts at the top */
+    }
+
+    .image-container{
+        margin-top: 70px;
+        width: 65%;
+    }
+
+    .shoe-info {
+        width: 100%;  /* Ensure shoe info takes full width */
+        text-align: center;  /* Center align shoe information */
+        margin-top: 15px;  /* Add space between image and shoe info */
+        overflow: hidden;
+    }
+
+
+    .shoe-info h3 {
+        font-size: 26px;
+        margin: 0px 10px;  /* Space between shoe name and category */
+    }
+
+    .category {
+        font-size: 16px;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: center; /* Center the categories */
+        gap: 8px;
+    }
+
+    .description {
+        font-size: 16px;
+        word-spacing: normal; /* Reset any abnormal word spacing */
+        letter-spacing: normal; /* Reset letter spacing */
+        margin-top: 20px;
+        padding: 5px;
+        max-height: 250px; /* Set a max height for the description */
+        overflow-y: auto; /* Enable scrolling for long descriptions */
+        text-align: justify; /* Justify text for better readability */
+    }
+
+    /* Shoe footer adjustments */
+    .shoe-footer {
+        position: relative;
+        text-align: center;
+        width: 100%;
+        left: auto;
+        margin-top: 50px;  /* Space between description and footer */
+        text-align: center;  /* Center text in footer */
+    }
+
+    .category, .price{
+        font-size: 20px;
+    }
+
+    .price span{
+        font-size: 24px;
+    }
+
+    .image-buttons {
+        position: absolute;
+        left: 50%;
+    }
+
+}
+
+@media only screen and (min-width: 1024px) {
+    /* Styles for desktops and larger devices */
+    .shoe-item img{
+        width: 80%;
+        height: 50%;
+    }
+}
