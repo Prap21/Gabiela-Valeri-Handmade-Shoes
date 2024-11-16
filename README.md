@@ -12,7 +12,6 @@ Visitors can explore the latest shoe collections, learn about the brand's story,
 - **Responsive Design**: Optimized for viewing on devices of all sizes, from desktops to smartphones.
 - **Smooth Navigation**: Intuitive menu and layout for easy browsing.
 - **JavaScript Interactivity**: Features like image sliders or hover effects to enhance user experience.
-- **About Section**: Information about the brand's story and mission.
 
 ---
 
